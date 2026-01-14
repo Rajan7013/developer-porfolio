@@ -1,0 +1,30 @@
+/* ===============================
+   ABOUT PAGE – MINIMAL STYLES
+   =============================== */
+
+.about-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal scroll bugs globally */
+.about-page *,
+.about-page *::before,
+.about-page *::after {
+  box-sizing: border-box;
+}
+
+/* ===============================
+   ACCESSIBILITY
+   =============================== */
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
