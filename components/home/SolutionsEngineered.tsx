@@ -22,11 +22,11 @@ export default function SolutionsEngineered() {
     ];
 
     return (
-        <SectionWrapper id="solutions" className="bg-gradient-to-b from-card/50 to-transparent">
+        <SectionWrapper id="solutions" className="bg-linear-to-b from-card/50 to-transparent">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Left - Diagram/Illustration */}
                 <div className="relative">
-                    <div className="aspect-square rounded-2xl bg-gradient-to-br from-accent/10 to-purple-600/10 border border-accent/20 p-8 flex items-center justify-center">
+                    <div className="aspect-square rounded-2xl bg-linear-to-br from-accent/10 to-purple-600/10 border border-accent/20 p-8 flex items-center justify-center">
                         <div className="grid grid-cols-2 gap-4 w-full">
                             {pillars.map((pillar, index) => (
                                 <div

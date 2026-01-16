@@ -36,7 +36,7 @@ export default function ProcessTimeline() {
     ];
 
     return (
-        <SectionWrapper id="process" className="bg-gradient-to-b from-transparent to-card/50">
+        <SectionWrapper id="process" className="bg-linear-to-b from-transparent to-card/50">
             <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Process</h2>
                 <p className="text-xl text-text-secondary">
@@ -75,7 +75,7 @@ export default function ProcessTimeline() {
                     <div key={index} className="flex gap-4">
                         {/* Circle and Line */}
                         <div className="flex flex-col items-center">
-                            <div className="w-16 h-16 bg-card border-4 border-accent rounded-full flex items-center justify-center flex-shrink-0">
+                            <div className="w-16 h-16 bg-card border-4 border-accent rounded-full flex items-center justify-center shrink-0">
                                 <span className="text-lg font-bold text-accent">{step.number}</span>
                             </div>
                             {index < steps.length - 1 && (

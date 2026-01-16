@@ -37,13 +37,13 @@ export default function FeaturedPortfolio() {
                 {projects.map((project, index) => (
                     <Card key={index} className="flex flex-col h-full">
                         {/* Thumbnail */}
-                        <div className="aspect-video bg-gradient-to-br from-accent/20 to-purple-600/20 rounded-lg mb-4 flex items-center justify-center text-6xl">
+                        <div className="aspect-video bg-linear-to-br from-accent/20 to-purple-600/20 rounded-lg mb-4 flex items-center justify-center text-6xl">
                             {project.image}
                         </div>
 
                         {/* Content */}
                         <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-                        <p className="text-text-secondary mb-4 flex-grow">{project.description}</p>
+                        <p className="text-text-secondary mb-4 grow">{project.description}</p>
 
                         {/* Stack Tags */}
                         <div className="flex flex-wrap gap-2 mb-4">

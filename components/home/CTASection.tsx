@@ -3,7 +3,7 @@ import Button from '../ui/Button';
 
 export default function CTASection() {
     return (
-        <section className="py-24 bg-gradient-to-br from-accent/10 via-purple-600/10 to-accent/10 relative overflow-hidden">
+        <section className="py-24 bg-linear-to-br from-accent/10 via-purple-600/10 to-accent/10 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
 

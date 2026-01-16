@@ -8,7 +8,7 @@ export default function ConsultationPage() {
     return (
         <>
             <Navbar />
-            <main className="flex-grow pt-20">
+            <main className="grow pt-20">
                 <SectionWrapper className="py-12 md:py-24">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 

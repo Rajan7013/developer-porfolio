@@ -39,9 +39,9 @@ export default function HeroSection() {
 
                     {/* Right Column - Visual */}
                     <div className="relative">
-                        <div className="aspect-square rounded-2xl bg-gradient-to-br from-accent/20 to-purple-600/20 backdrop-blur-sm border border-accent/30 flex items-center justify-center overflow-hidden">
+                        <div className="aspect-square rounded-2xl bg-linear-to-br from-accent/20 to-purple-600/20 backdrop-blur-sm border border-accent/30 flex items-center justify-center overflow-hidden">
                             {/* Placeholder for service image */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-br from-accent/10 to-transparent" />
                             <div className="relative z-10 text-center p-8">
                                 <div className="w-32 h-32 mx-auto mb-4 bg-accent/20 rounded-full flex items-center justify-center">
                                     <svg

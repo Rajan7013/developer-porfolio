@@ -26,7 +26,7 @@ export default function TrustMetrics() {
     ];
 
     return (
-        <section className="py-12 bg-gradient-to-b from-transparent to-card/50">
+        <section className="py-12 bg-linear-to-b from-transparent to-card/50">
             <div className="container">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                     {metrics.map((metric, index) => (
