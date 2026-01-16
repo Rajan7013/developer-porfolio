@@ -1,120 +1,74 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Home, UserRound, Briefcase, FileBadge, Layers, MessageSquare, Menu, X, FolderGit2 } from 'lucide-react';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const pathname = usePathname();
-    const menuRef = useRef<HTMLDivElement>(null);
 
-    // Close menu when route changes
-    useEffect(() => {
-        // Menu will close automatically when pathname changes
-        // This is handled by the key prop on navigation
-        return () => {
-            setIsMenuOpen(false);
-        };
-    }, [pathname]);
-
-    // Close menu when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-                setIsMenuOpen(false);
-            }
-        };
-
-        if (isMenuOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [isMenuOpen]);
-
-    const isActive = (path: string) => {
-        if (path === '/' && pathname === '/') return true;
-        if (path !== '/' && pathname.startsWith(path)) return true;
-        return false;
-    };
-
-    const linkClass = (path: string) =>
-        `bg-transparent border-none cursor-pointer font-medium transition-colors ${isActive(path) ? 'text-white' : 'text-[#9CA3AF] hover:text-white'}`;
+    // Links matching source project
+    const navItems = [
+        { name: 'Home', href: '/', icon: Home },
+        { name: 'About', href: '/about', icon: UserRound },
+        { name: 'Services', href: '/services', icon: Layers },
+        { name: 'Certificates', href: '/certificate', icon: FileBadge },
+        { name: 'Projects', href: '/projects', icon: FolderGit2 },
+        { name: 'Contact', href: '/contact', icon: MessageSquare },
+    ];
 
     return (
-        <nav ref={menuRef}>
-            <div className="container">
-                <Link href="/" className="logo">⚡ DevSphere</Link>
+        <nav className="fixed top-0 w-full z-40 bg-card/95 backdrop-blur-sm border-b border-bg-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex h-[70px] items-center justify-between">
+                    {/* Logo */}
+                    <Link href="/" className="text-3xl font-bold font-script relative z-50">
+                        <span className="text-skin text-4xl">R</span>ajan
+                    </Link>
 
-                {/* Mobile menu */}
-                <ul className={`nav-links ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
-                    <li>
-                        <Link href="/" className={linkClass('/')}>
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/services" className={linkClass('/services')}>
-                            Services
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/project" className={linkClass('/project')}>
-                            Project
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/about" className={linkClass('/about')}>
-                            About
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/technologies" className={linkClass('/technologies')}>
-                            Tech Stack
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/contact" className={linkClass('/contact')}>
-                            Contact
-                        </Link>
-                    </li>
-                    {!isMenuOpen && (
-                        <li>
+                    {/* Desktop Menu */}
+                    <div className="hidden lg:flex items-center gap-8">
+                        {navItems.map((item) => (
                             <Link
-                                href="/contact"
-                                className="cta-btn"
-                                style={{
-                                    background: 'linear-gradient(135deg, #8B5CF6, #EC4899)',
-                                    boxShadow: '0 4px 15px rgba(139, 92, 246, 0.4)'
-                                }}
+                                key={item.name}
+                                href={item.href}
+                                className="flex items-center gap-2 text-text-secondary hover:text-skin transition-colors font-medium group"
                             >
-                                Get Started
+                                <item.icon size={18} className="text-skin group-hover:text-skin" />
+                                {item.name}
                             </Link>
-                        </li>
-                    )}
-                </ul>
+                        ))}
+                    </div>
 
-                {/* Hamburger Menu - Proper 3 lines */}
-                <div
-                    className="menu-toggle"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    style={{ cursor: 'pointer' }}
-                >
-                    <span style={{
-                        transform: isMenuOpen ? 'rotate(45deg) translate(7px, 7px)' : 'none',
-                        transition: 'all 0.3s ease'
-                    }}></span>
-                    <span style={{
-                        opacity: isMenuOpen ? 0 : 1,
-                        transition: 'all 0.3s ease'
-                    }}></span>
-                    <span style={{
-                        transform: isMenuOpen ? 'rotate(-45deg) translate(7px, -7px)' : 'none',
-                        transition: 'all 0.3s ease'
-                    }}></span>
+                    {/* Mobile Menu Button */}
+                    <div className="lg:hidden flex items-center z-50">
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="text-text-primary p-2 focus:outline-none"
+                        >
+                            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            <div
+                className={`fixed inset-0 bg-background/95 backdrop-blur-md transition-transform duration-300 lg:hidden z-40 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                style={{ transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)' }}
+            >
+                <div className="flex flex-col items-center justify-center h-full space-y-8">
+                    {navItems.map((item) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="flex items-center gap-3 text-2xl text-text-primary hover:text-skin font-medium transition-colors group"
+                        >
+                            <item.icon size={24} className="text-skin" />
+                            {item.name}
+                        </Link>
+                    ))}
                 </div>
             </div>
         </nav>

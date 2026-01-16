@@ -5,37 +5,20 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer>
-            <div className="container">
-                <div className="footer-content">
-                    <div className="footer-section">
-                        <h3 className="logo">DevSphere</h3>
-                        <p style={{ color: 'var(--text-muted)', marginTop: '1rem' }}>
-                            Building the future of digital experiences with cutting-edge technology and innovative solutions.
-                        </p>
-                    </div>
-                    <div className="footer-section">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><Link href="/" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">Home</Link></li>
-                            <li><Link href="/services" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">Services</Link></li>
-                            <li><Link href="/project" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">Project</Link></li>
-                            <li><Link href="/about" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">About Us</Link></li>
-                            <li><Link href="/contact" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">Contact</Link></li>
-                        </ul>
-                    </div>
-                    <div className="footer-section">
-                        {/* Adding Social Links placeholder or keeping it simple as per original */}
-                        <h3>Connect</h3>
-                        <ul>
-                            <li><a href="#" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">LinkedIn</a></li>
-                            <li><a href="#" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">Twitter</a></li>
-                            <li><a href="#" className="text-[#9CA3AF] hover:text-[#3B82F6] transition-colors">GitHub</a></li>
-                        </ul>
-                    </div>
+        <footer className="bg-card border-t border-bg-50 text-text-secondary py-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="text-center md:text-left">
+                    <p className="font-medium text-lg text-text-primary">
+                        <span className="font-script text-2xl text-skin mr-1">R</span>ajan Prasaila Yadav
+                    </p>
+                    <p className="text-sm mt-1">© {new Date().getFullYear()} All Rights Reserved.</p>
                 </div>
-                <div className="footer-bottom">
-                    <p>&copy; {new Date().getFullYear()} DevSphere. All rights reserved. Built with ❤️ using modern web technologies.</p>
+
+                <div className="flex gap-4">
+                    <a href="https://www.linkedin.com/in/ajit-prasad-600083238/" target="_blank" className="hover:text-skin transition-colors">LinkedIn</a>
+                    <a href="https://www.instagram.com/designerajit/" target="_blank" className="hover:text-skin transition-colors">Instagram</a>
+                    <a href="https://www.behance.net/ajitprasad2" target="_blank" className="hover:text-skin transition-colors">Behance</a>
+                    <a href="https://www.youtube.com/@TechWorldAjit" target="_blank" className="hover:text-skin transition-colors">YouTube</a>
                 </div>
             </div>
         </footer>

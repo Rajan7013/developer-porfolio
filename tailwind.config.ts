@@ -9,35 +9,27 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                background: "#0B0F1A",
-                card: "#111827",
-                accent: "#3B82F6",
-                "text-primary": "#FFFFFF",
-                "text-secondary": "#9CA3AF",
+                background: "var(--bg-black-900)",
+                card: "var(--bg-black-100)",
+                accent: "var(--skin-color)",
+                skin: "var(--skin-color)",
+                "text-primary": "var(--text-black-900)",
+                "text-secondary": "var(--text-black-700)",
+                "bg-50": "var(--bg-black-50)",
             },
             borderRadius: {
                 DEFAULT: "12px",
             },
             spacing: {
-                "section-desktop": "96px",
-                "section-mobile": "64px",
+                "section-desktop": "60px",
+                "section-mobile": "40px",
             },
             maxWidth: {
                 content: "1200px",
             },
-            screens: {
-                mobile: "375px",
-                tablet: "768px",
-                desktop: "1440px",
-            },
-            gridTemplateColumns: {
-                "12": "repeat(12, minmax(0, 1fr))",
-            },
-            gap: {
-                gutter: "24px",
-            },
             fontFamily: {
-                sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+                sans: ["var(--font-poppins)", "sans-serif"],
+                script: ["var(--font-clicker)", "cursive"],
             },
         },
     },

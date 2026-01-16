@@ -1,94 +1,42 @@
 'use client';
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
+import { Smartphone, Laptop, Palette, Code, Video, Monitor } from 'lucide-react';
 import Footer from '@/components/Footer';
 
-export default function ServicesPage() {
+export default function Services() {
     const services = [
-        {
-            title: 'Website Development',
-            desc: 'High-performance, responsive websites built with Next.js and modern frameworks.',
-            image: '/images/services/service-web-dev.avif',
-            delay: '0'
-        },
-        {
-            title: 'Mobile App Development',
-            desc: 'Native and cross-platform mobile apps for iOS and Android using React Native.',
-            image: '/images/services/service-mobile-app.avif',
-            delay: '100'
-        },
-        {
-            title: 'UI/UX Design',
-            desc: 'User-centric design with stunning visuals and intuitive navigation flows.',
-            image: '/images/services/service-ui-ux.avif',
-            delay: '200'
-        },
-        {
-            title: 'AI Integration',
-            desc: 'Smart AI solutions using Gemini, OpenAI, and custom LLM integration.',
-            image: '/images/services/service-ai-integration.avif',
-            delay: '300'
-        },
-        {
-            title: 'Data Analytics',
-            desc: 'Transform raw data into actionable insights with interactive properties.',
-            image: '/images/services/service-data-analytics.avif',
-            delay: '400'
-        },
-        {
-            title: 'Digital Media',
-            desc: 'Professional video editing, motion graphics, and digital content creation.',
-            image: '/images/services/service-digital-media.avif',
-            delay: '500'
-        },
-        {
-            title: 'Security & Auth',
-            desc: 'Enterprise-grade security, OAuth integration, and role-based access control.',
-            image: '/images/services/service-security.avif',
-            delay: '600'
-        },
-        {
-            title: 'Cloud & DevOps',
-            desc: 'Scalable cloud architecture and CI/CD pipelines on AWS and Vercel.',
-            image: '/images/services/service-cloud-devops.avif',
-            delay: '700'
-        }
+        { title: 'App Design', desc: 'I design Apps that not only look beautiful but also offer exceptional functionality.', icon: Smartphone },
+        { title: 'Web Design', desc: 'I design Website that not only look beautiful but also offer exceptional functionality', icon: Laptop },
+        { title: 'Graphics Design', desc: 'I design graphics that not only look beautiful but also convey deep meaning and purpose.', icon: Palette },
+        { title: 'Web Development', desc: 'I develop Website that not only look beautiful but also offer exceptional functionality', icon: Code },
+        { title: 'Video Editor', desc: 'I edit videos that not only look beautiful but also engage and captivate audiences.', icon: Video },
+        { title: 'UI / UX Design', desc: 'I design UI/UX that not only looks beautiful but also understands user requirements and behavior.', icon: Monitor },
     ];
 
     return (
-        <>
-            <Navbar />
-            <main style={{ paddingTop: '4rem', minHeight: '100vh' }}>
-                <section className="section container">
-                    <div className="section-header">
-                        <h2 className="section-title">Our Services</h2>
-                        <p className="section-subtitle">Comprehensive digital solutions tailored to your business needs</p>
+        <div className="min-h-screen bg-background pt-20">
+            <section id="services" className="section pt-8 pb-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div className="section-title text-center mb-16">
+                        <h2 className="text-3xl font-bold text-text-primary relative inline-block pb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-skin">
+                            Services
+                        </h2>
                     </div>
-
-                    <div className="services-grid">
-                        {services.map((service, index) => (
-                            <div key={index} className="service-card" style={{ animationDelay: `${service.delay}ms` }}>
-                                <div className="service-image-container">
-                                    <img
-                                        src={service.image}
-                                        alt={service.title}
-                                        className="service-image"
-                                        onError={(e) => {
-                                            (e.target as HTMLImageElement).src = `https://placehold.co/800x800/1e293b/3b82f6?text=${encodeURIComponent(service.title)}`;
-                                        }}
-                                    />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {services.map((service, idx) => (
+                            <div key={idx} className="bg-card p-8 rounded-2xl shadow-sm border border-bg-50 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                                <div className="mb-4 group-hover:scale-110 transition-transform text-skin">
+                                    <service.icon size={40} />
                                 </div>
-                                <div className="service-content">
-                                    <h3>{service.title}</h3>
-                                    <p>{service.desc}</p>
-                                </div>
+                                <h4 className="text-xl font-bold text-text-primary mb-3">{service.title}</h4>
+                                <p className="text-text-secondary leading-6">{service.desc}</p>
                             </div>
                         ))}
                     </div>
-                </section>
-            </main>
+                </div>
+            </section>
             <Footer />
-        </>
+        </div>
     );
 }

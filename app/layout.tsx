@@ -12,6 +12,22 @@ export const viewport = {
   maximumScale: 5,
 };
 
+import StyleSwitcher from "@/components/StyleSwitcher";
+import Navbar from "@/components/Navbar";
+import { Poppins, Clicker_Script } from "next/font/google";
+
+const poppins = Poppins({
+  weight: ["200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+});
+
+const clickerScript = Clicker_Script({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-clicker",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className={`${poppins.variable} ${clickerScript.variable}`}>
+        <StyleSwitcher />
+        <Navbar />
         {children}
       </body>
     </html>
