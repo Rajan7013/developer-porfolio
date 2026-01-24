@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../ui/Card';
-import Button from '../ui/Button';
+import Button from '../ui/button';
 import SectionWrapper from '../ui/SectionWrapper';
 
 export default function ServicesOverview() {
