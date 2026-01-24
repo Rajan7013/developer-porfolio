@@ -8,10 +8,10 @@ import { FileText, Download, Award, X, ChevronLeft, ChevronRight } from 'lucide-
 
 export default function Certificate() {
     const images = [
-        { src: 'HCL GUVI Certification.png', title: 'HCL GUVI Certification' },
-        { src: 'HCL GUVI Certification - 7B679r4OX11jMi5767.png', title: 'HCL GUVI Advanced Certification' },
-        { src: 'IMG-20260118-WA0006.jpg.jpeg', title: 'Course Completion Certificate' },
-        { src: '549c83e1-b4d7-4e27-860e-ba48d2a50e6e (1).jpg.jpeg', title: 'Advanced Tech Certificate' },
+        { src: 'HCL GUVI Certification.webp', title: 'HCL GUVI Certification' },
+        { src: 'HCL GUVI Certification - 7B679r4OX11jMi5767.webp', title: 'HCL GUVI Advanced Certification' },
+        { src: 'IMG-20260118-WA0006.jpg.webp', title: 'Course Completion Certificate' },
+        { src: '549c83e1-b4d7-4e27-860e-ba48d2a50e6e (1).jpg.webp', title: 'Advanced Tech Certificate' },
     ];
 
     const pdfs = [
