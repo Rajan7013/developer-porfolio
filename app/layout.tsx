@@ -12,7 +12,6 @@ export const viewport = {
   maximumScale: 5,
 };
 
-import StyleSwitcher from "@/components/StyleSwitcher";
 import Navbar from "@/components/Navbar";
 import { Poppins, Clicker_Script } from "next/font/google";
 
@@ -36,7 +35,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${clickerScript.variable}`}>
-        <StyleSwitcher />
         <Navbar />
         {children}
       </body>

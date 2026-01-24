@@ -31,8 +31,8 @@ export default function Button({
     };
 
     const sizeStyles = {
-        default: 'px-6 py-3 text-base',
-        large: 'px-8 py-4 text-lg',
+        default: 'px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base',
+        large: 'px-5 py-3 sm:px-8 sm:py-4 text-sm sm:text-lg',
     };
 
     // If disabled, remove hover effects from variant styles roughly or just let opacity handle it

@@ -27,6 +27,7 @@
   --text-black-900: #302e4d;
   --text-black-700: #504e70;
   --skin-color: #ec1839;
+  --skin-color-rgb: 236, 24, 57;
 }
 
 .dark {
@@ -39,6 +40,7 @@
 }
 
 /* Base Styles */
+html,
 body {
   line-height: 1.5;
   font-size: 16px;
@@ -46,6 +48,9 @@ body {
   background-color: var(--bg-black-900);
   color: var(--text-black-700);
   transition: all 0.3s ease;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 h1,

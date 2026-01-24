@@ -1,68 +1,73 @@
+'use client';
+
 import React from 'react';
-import Button from '../ui/Button';
+import Image from 'next/image';
+import Link from 'next/link';
+import useTypewriter from '@/hooks/useTypewriter';
 
 export default function HeroSection() {
+    const roles = [
+        "Full Stack AI Developer"
+    ];
+    const displayText = useTypewriter(roles, 100, 2000, false);
+
     return (
-        <section className="min-h-[90vh] max-h-[820px] flex items-center pt-24 pb-12">
-            <div className="container">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Left Column - Text */}
-                    <div className="space-y-6 animate-fade-in-up">
-                        {/* Eyebrow */}
-                        <div className="inline-block">
-                            <span className="text-accent text-sm font-semibold uppercase tracking-wider bg-accent/10 px-4 py-2 rounded-full">
-                                Digital Engineering Studio
-                            </span>
-                        </div>
+        <section className="pt-24 pb-10 px-6 flex items-center bg-background">
+            <div className="max-w-content w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
 
-                        {/* H1 */}
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                            Solutions Engineered for{' '}
-                            <span className="text-gradient">Relentless Growth</span>
-                        </h1>
+                {/* Left Content Stack */}
+                <div className="flex flex-col gap-4 w-full lg:max-w-none mx-auto lg:mx-0 text-center lg:text-left order-2 lg:order-1">
 
-                        {/* Subtext */}
-                        <p className="text-lg md:text-xl text-text-secondary max-w-2xl">
-                            Precision-engineered digital solutions designed to help you execute and scale with confidence.
-                        </p>
+                    {/* Name (H1) */}
+                    <h1 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[56px] leading-[1.1] font-extrabold text-text-primary lg:whitespace-nowrap">
+                        Hi, I’m <span className="text-skin">Rajan Prasaila<br className="lg:hidden" /> Yadav</span>
+                    </h1>
 
-                        {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Button href="/consultation" size="large">
-                                Get a Free Consultation
-                            </Button>
-                            <Button href="/portfolio" variant="secondary" size="large">
-                                View Our Work
-                            </Button>
-                        </div>
-                    </div>
+                    {/* Main Tagline (H2) */}
+                    <h2 className="text-2xl sm:text-3xl lg:text-[36px] leading-[1.2] font-bold text-text-primary">
+                        I build scalable web & AI products for modern businesses
+                    </h2>
 
-                    {/* Right Column - Visual */}
-                    <div className="relative">
-                        <div className="aspect-square rounded-2xl bg-linear-to-br from-accent/20 to-purple-600/20 backdrop-blur-sm border border-accent/30 flex items-center justify-center overflow-hidden">
-                            {/* Placeholder for service image */}
-                            <div className="absolute inset-0 bg-linear-to-br from-accent/10 to-transparent" />
-                            <div className="relative z-10 text-center p-8">
-                                <div className="w-32 h-32 mx-auto mb-4 bg-accent/20 rounded-full flex items-center justify-center">
-                                    <svg
-                                        className="w-16 h-16 text-accent"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M13 10V3L4 14h7v7l9-11h-7z"
-                                        />
-                                    </svg>
-                                </div>
-                                <p className="text-white font-semibold text-xl">Engineered for Scale</p>
-                            </div>
-                        </div>
+                    {/* Typing Role (H3) */}
+                    <h3 className="text-lg lg:text-[18px] font-medium text-emerald-500 h-8">
+                        {displayText}
+                    </h3>
+
+                    {/* Supporting Text */}
+                    <p className="text-lg lg:text-[18px] leading-[1.7] text-text-secondary">
+                        I design and deploy real-world digital platforms that are fast, secure, and cost-efficient.
+                    </p>
+
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
+                        <Link
+                            href="/contact"
+                            className="px-7 py-3.5 rounded-full font-semibold bg-skin text-white hover:opacity-90 transition-opacity shadow-lg"
+                        >
+                            Start Your Project
+                        </Link>
+                        <Link
+                            href="/projects"
+                            className="px-7 py-3.5 rounded-full font-semibold border-2 border-skin text-skin hover:bg-skin hover:text-white transition-all shadow-sm"
+                        >
+                            View Live Work
+                        </Link>
                     </div>
                 </div>
+
+                {/* Profile Image (Right) */}
+                <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+                    <div className="relative w-[220px] h-[220px] lg:w-[360px] lg:h-[360px] rounded-full overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.15)] border-4 border-background">
+                        <Image
+                            src="/image/home-profile.webp"
+                            alt="Rajan Prasaila Yadav"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+                </div>
+
             </div>
         </section>
     );

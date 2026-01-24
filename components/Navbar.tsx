@@ -1,11 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Home, UserRound, Briefcase, FileBadge, Layers, MessageSquare, Menu, X, FolderGit2 } from 'lucide-react';
+import { Home, UserRound, Briefcase, FileBadge, Layers, MessageSquare, Menu, X, FolderGit2, Sun, Moon, Palette } from 'lucide-react';
+
+const colors = [
+    { name: 'color-1', hex: '#ec1839', rgb: '236, 24, 57' },
+    { name: 'color-2', hex: '#fa5b0f', rgb: '250, 91, 15' },
+    { name: 'color-3', hex: '#37b182', rgb: '55, 177, 130' },
+    { name: 'color-4', hex: '#1854b4', rgb: '24, 84, 180' },
+    { name: 'color-5', hex: '#f021b2', rgb: '240, 33, 178' },
+];
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showColorPicker, setShowColorPicker] = useState(false);
+    const [isDark, setIsDark] = useState(false);
+    const [activeColor, setActiveColor] = useState('#ec1839');
 
     // Links matching source project
     const navItems = [
@@ -17,8 +28,22 @@ export default function Navbar() {
         { name: 'Contact', href: '/contact', icon: MessageSquare },
     ];
 
+    // Theme Toggle
+    const toggleTheme = () => {
+        setIsDark(!isDark);
+        document.documentElement.classList.toggle('dark');
+    };
+
+    // Color Set
+    const setColor = (hex: string, rgb: string) => {
+        setActiveColor(hex);
+        document.documentElement.style.setProperty('--skin-color', hex);
+        document.documentElement.style.setProperty('--skin-color-rgb', rgb);
+        setShowColorPicker(false);
+    };
+
     return (
-        <nav className="fixed top-0 w-full z-40 bg-card/95 backdrop-blur-sm border-b border-bg-50">
+        <nav className="fixed top-0 w-full z-50 bg-card/95 backdrop-blur-sm border-b border-bg-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-[70px] items-center justify-between">
                     {/* Logo */}
@@ -38,38 +63,110 @@ export default function Navbar() {
                                 {item.name}
                             </Link>
                         ))}
+
+                        {/* Desktop Theme Controls */}
+                        <div className="flex items-center gap-3 ml-4 border-l border-bg-50 pl-4">
+                            {/* Color Picker */}
+                            <div className="relative">
+                                <button
+                                    onClick={() => setShowColorPicker(!showColorPicker)}
+                                    className="p-2 text-text-secondary hover:text-skin transition-colors"
+                                    aria-label="Theme colors"
+                                >
+                                    <Palette size={20} />
+                                </button>
+                                {showColorPicker && (
+                                    <div className="absolute right-0 top-12 bg-card border border-bg-50 rounded-lg shadow-lg p-3 w-40">
+                                        <p className="text-xs font-semibold text-text-primary mb-2">Theme Colors</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {colors.map((color) => (
+                                                <button
+                                                    key={color.name}
+                                                    onClick={() => setColor(color.hex, color.rgb)}
+                                                    style={{ backgroundColor: color.hex }}
+                                                    className={`w-7 h-7 rounded-full border-2 ${activeColor === color.hex ? 'border-text-primary scale-110' : 'border-bg-50'} transition-all`}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Theme Mode Toggle */}
+                            <button
+                                onClick={toggleTheme}
+                                className="p-2 text-text-secondary hover:text-skin transition-colors"
+                                aria-label="Toggle theme"
+                            >
+                                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                            </button>
+                        </div>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="lg:hidden flex items-center z-50">
+                    <div className="lg:hidden flex items-center gap-3">
+                        {/* Mobile Theme Controls in Header */}
+                        <div className="relative">
+                            <button
+                                onClick={() => setShowColorPicker(!showColorPicker)}
+                                className="p-2 text-text-secondary hover:text-skin transition-colors"
+                                aria-label="Theme colors"
+                            >
+                                <Palette size={20} />
+                            </button>
+                            {showColorPicker && (
+                                <div className="absolute right-0 top-12 bg-card border border-bg-50 rounded-lg shadow-lg p-3 w-40 z-50">
+                                    <p className="text-xs font-semibold text-text-primary mb-2">Theme Colors</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {colors.map((color) => (
+                                            <button
+                                                key={color.name}
+                                                onClick={() => setColor(color.hex, color.rgb)}
+                                                style={{ backgroundColor: color.hex }}
+                                                className={`w-7 h-7 rounded-full border-2 ${activeColor === color.hex ? 'border-text-primary scale-110' : 'border-bg-50'} transition-all`}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 text-text-secondary hover:text-skin transition-colors"
+                            aria-label="Toggle theme"
+                        >
+                            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                        </button>
+
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="text-text-primary p-2 focus:outline-none"
+                            aria-label="Toggle menu"
                         >
                             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </div>
                 </div>
-            </div>
 
-            {/* Mobile Menu Overlay */}
-            <div
-                className={`fixed inset-0 bg-background/95 backdrop-blur-md transition-transform duration-300 lg:hidden z-40 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-                style={{ transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)' }}
-            >
-                <div className="flex flex-col items-center justify-center h-full space-y-8">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-3 text-2xl text-text-primary hover:text-skin font-medium transition-colors group"
-                        >
-                            <item.icon size={24} className="text-skin" />
-                            {item.name}
-                        </Link>
-                    ))}
-                </div>
+                {/* Mobile Menu Dropdown */}
+                {isMenuOpen && (
+                    <div className="lg:hidden bg-card border-t border-bg-50">
+                        <div className="flex flex-col py-4 space-y-1 items-end">
+                            {navItems.map((item) => (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="flex items-center gap-3 px-4 py-3 text-lg text-text-primary hover:text-skin hover:bg-skin/5 transition-colors font-medium border-b border-bg-50/50 w-full justify-end"
+                                >
+                                    <item.icon size={22} className="text-skin" />
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </nav>
     );
