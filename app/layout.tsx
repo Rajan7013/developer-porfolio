@@ -13,6 +13,7 @@ export const viewport = {
 };
 
 import Navbar from "@/components/Navbar";
+import AnalyticsTracker from "@/components/analytics/AnalyticsTracker";
 import { Poppins, Clicker_Script } from "next/font/google";
 
 const poppins = Poppins({
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${clickerScript.variable}`}>
+        <AnalyticsTracker />
         <Navbar />
         {children}
       </body>
