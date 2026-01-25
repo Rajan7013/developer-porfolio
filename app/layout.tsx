@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     canonical: "https://rajan-portfolio-iota.vercel.app",
   },
   verification: {
-    google: "google-site-verification=YOUR_VERIFICATION_CODE",
+    google: "39Uk7SyWWSHflx02-6UUBub3JFHJ7SmIEgwLeuVpiOY",
     other: {
       "msvalidate.01": "YOUR_BING_VERIFICATION_CODE",
     },
