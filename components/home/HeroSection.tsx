@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Download } from 'lucide-react';
 import useTypewriter from '@/hooks/useTypewriter';
 
 export default function HeroSection() {
@@ -52,6 +53,14 @@ export default function HeroSection() {
                         >
                             View Live Work
                         </Link>
+                        <a
+                            href="/Rajan_Resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-7 py-3.5 rounded-full font-semibold border-2 border-text-secondary text-text-secondary hover:bg-text-secondary hover:text-white transition-all shadow-sm flex items-center justify-center gap-2"
+                        >
+                            <Download size={20} /> Resume
+                        </a>
                     </div>
                 </div>
 

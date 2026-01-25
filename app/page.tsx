@@ -173,16 +173,43 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Using placeholders or your existing projects logic - keeping it static for strictly following copy */}
               {[
-                { title: "Consultancy Platform", res: "Comprehensive data flow management", bg: "bg-blue-900/10", tag: "Live Demo" },
-                { title: "Health Assistant AI", res: "Intelligent user support insights", bg: "bg-green-900/10", tag: "AI System" },
-                { title: "School Management", res: "Streamlined admin operations", bg: "bg-purple-900/10", tag: "Academic Project" }
+                {
+                  title: "Consultancy Platform",
+                  res: "Comprehensive data flow management",
+                  bg: "bg-blue-900/10",
+                  tag: "Live Demo",
+                  img: "/Project image/pinnacle-nepal/project-pinnacle-nepal-desktop-home.webp",
+                  link: "https://www.pinnaclenepal.org/"
+                },
+                {
+                  title: "Health Assistant AI",
+                  res: "Intelligent user support insights",
+                  bg: "bg-green-900/10",
+                  tag: "AI System",
+                  img: "/Project image/HealthMind AI/project-healthmind-ai-desktop-home.webp",
+                  link: "https://health-assistant-ai-ashen.vercel.app/"
+                },
+                {
+                  title: "School Management",
+                  res: "Streamlined admin operations",
+                  bg: "bg-purple-900/10",
+                  tag: "Academic Project",
+                  img: "/Project image/school management/project-school-desktop-home.webp",
+                  link: "https://bfps-ruddy.vercel.app/"
+                }
               ].map((item, i) => (
-                <div key={i} className={`rounded-2xl overflow-hidden border border-bg-50 group hover:shadow-2xl transition-all relative`}>
+                <Link href={item.link} target="_blank" key={i} className={`block rounded-2xl overflow-hidden border border-bg-50 group hover:shadow-2xl transition-all relative`}>
                   <span className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded text-skin shadow-sm z-10 border border-skin/10">
                     {item.tag}
                   </span>
-                  <div className={`h-40 ${item.bg} flex items-center justify-center text-skin/20`}>
-                    <Globe size={48} />
+                  <div className={`relative h-48 w-full ${item.bg} overflow-hidden`}>
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                   </div>
                   <div className="p-5 bg-card">
                     <h3 className="text-lg font-bold mb-1">{item.title}</h3>
@@ -191,7 +218,7 @@ export default function Home() {
                       <span>{item.res}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 
