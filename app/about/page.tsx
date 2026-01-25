@@ -57,34 +57,18 @@ export default function AboutPage() {
 
                 {/* SECTION 2 — MY JOURNEY */}
                 <section className="py-8 bg-background border-b border-bg-50">
-                    <div className="max-w-content mx-auto px-6">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                            {/* Image Left */}
-                            <div className="flex justify-center">
-                                <div className="relative w-full max-w-[400px] aspect-4/3 rounded-2xl overflow-hidden shadow-xl">
-                                    <Image
-                                        src="/image/developer.webp"
-                                        alt="My Developer Journey"
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 768px) 100vw, 400px"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Text Right */}
-                            <div>
-                                <h2 className="text-sm font-bold text-skin mb-3 uppercase tracking-widest">My Journey</h2>
-                                <h3 className="text-3xl font-bold mb-6 text-text-primary">
-                                    From small ideas to real-world systems
-                                </h3>
-                                <p className="text-lg text-text-secondary leading-relaxed mb-6">
-                                    I started by building small projects at night after college, learning through practice and mistakes.
-                                </p>
-                                <p className="text-lg text-text-secondary leading-relaxed">
-                                    Today, I have deployed multiple real-world systems across education, finance, and AI tools — all built using free and open technologies and optimized for performance and reliability.
-                                </p>
-                            </div>
+                    <div className="max-w-4xl mx-auto px-6">
+                        <div>
+                            <h2 className="text-sm font-bold text-skin mb-3 uppercase tracking-widest">My Journey</h2>
+                            <h3 className="text-3xl font-bold mb-6 text-text-primary">
+                                From small ideas to real-world systems
+                            </h3>
+                            <p className="text-lg text-text-secondary leading-relaxed mb-6">
+                                I started by building small projects at night after college, learning through practice and mistakes.
+                            </p>
+                            <p className="text-lg text-text-secondary leading-relaxed">
+                                Today, I have deployed multiple real-world systems across education, finance, and AI tools — all built using free and open technologies and optimized for performance and reliability.
+                            </p>
                         </div>
                     </div>
                 </section>
