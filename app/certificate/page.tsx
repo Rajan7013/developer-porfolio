@@ -93,6 +93,7 @@ export default function Certificate() {
                                             alt={cert.title}
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                                             <span className="opacity-0 group-hover:opacity-100 bg-black/75 text-white text-sm px-4 py-2 rounded-full transition-opacity">
@@ -179,6 +180,7 @@ export default function Certificate() {
                                 className="object-contain"
                                 quality={100}
                                 priority
+                                sizes="100vw"
                             />
                         </div>
 

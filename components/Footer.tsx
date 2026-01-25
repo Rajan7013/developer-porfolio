@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { Github, Linkedin } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -23,6 +24,16 @@ export default function Footer() {
                     <Link href="/services" className="hover:text-skin transition-colors">Services</Link>
                     <Link href="/projects" className="hover:text-skin transition-colors">Projects</Link>
                     <Link href="/contact" className="hover:text-skin transition-colors">Contact</Link>
+                </div>
+
+                {/* Line 3: Social Links */}
+                <div className="flex justify-center gap-6 mb-4">
+                    <Link href="https://www.linkedin.com/in/rajan-prasaila-yadav-969a5b32b/" target="_blank" className="text-text-secondary hover:text-skin transition-colors group" title="LinkedIn">
+                        <Linkedin size={20} className="group-hover:scale-110 transition-transform" />
+                    </Link>
+                    <Link href="https://github.com/Rajan7013" target="_blank" className="text-text-secondary hover:text-skin transition-colors group" title="GitHub">
+                        <Github size={20} className="group-hover:scale-110 transition-transform" />
+                    </Link>
                 </div>
 
                 {/* Line 3: Copyright */}

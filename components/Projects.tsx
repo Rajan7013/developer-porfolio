@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
                 {/* Header */}
                 <div className="text-center mb-12 md:mb-16">
                     <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-text-primary mb-3 md:mb-4">
-                        Projects by <span className="text-skin">Rajan Prasaila Yadav</span> – Full Stack & AI Systems
+                        Building High-Performance <span className="text-skin">Full Stack & AI Systems</span>
                     </h1>
                     <p className="text-base md:text-lg text-text-secondary max-w-3xl mx-auto mt-3 md:mt-4">
                         A selection of real-world projects I have built and deployed. These include full-stack applications, AI systems, and responsive web platforms designed to work in production environments.

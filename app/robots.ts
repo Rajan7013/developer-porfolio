@@ -1,14 +1,12 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = 'https://relentlessgrowth.com'; // Replace with actual domain
-
     return {
         rules: {
-            userAgent: '*',
+            userAgent: ['*', 'GPTBot', 'ChatGPT-User', 'Google-Extended', 'Claude-Web', 'CCBot', 'bingbot'],
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: `${baseUrl}/sitemap.xml`,
+        sitemap: 'https://rajan-portfolio-iota.vercel.app/sitemap.xml',
     };
 }

@@ -68,7 +68,7 @@ export default function Contact() {
                 <section className="px-2 sm:px-6 lg:px-8 mb-12 md:mb-16">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-text-primary mb-3 md:mb-4">
-                            Contact <span className="text-skin">Rajan Prasaila Yadav</span>
+                            Let's Build Something <span className="text-skin">Extraordinary Together</span>
                         </h1>
                         <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">
                             Feel free to reach out for collaborations, projects, or internship opportunities.

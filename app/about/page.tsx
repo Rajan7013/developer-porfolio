@@ -14,7 +14,7 @@ export default function AboutPage() {
                 {/* SEO H1 - Visually part of header or top section */}
                 <div className="max-w-content mx-auto px-6 mb-6 text-center lg:text-left">
                     <h1 className="text-4xl md:text-5xl font-extrabold text-text-primary leading-tight">
-                        About Rajan Prasaila Yadav – <span className="text-skin">Full Stack AI Developer</span>
+                        Architecting Intelligent <span className="text-skin">Digital Experiences</span>
                     </h1>
                 </div>
 
@@ -39,13 +39,15 @@ export default function AboutPage() {
                             {/* Image Right */}
                             <div className="order-1 lg:order-2 flex justify-center">
                                 {/* Placeholder for Personal Image - using a colored div for now or light/dark abstract if available */}
-                                <div className="relative w-full max-w-[280px] aspect-square flex items-center justify-center rounded-full overflow-hidden">
+                                {/* Personal Image - Landscape */}
+                                <div className="relative w-full max-w-[400px] aspect-3/2 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl hover:rotate-3 transition-transform duration-500">
                                     <Image
                                         src="/image/home-profile.webp"
                                         alt="Rajan Prasaila Yadav"
-                                        width={400}
-                                        height={400}
-                                        className="object-cover w-full h-full"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 500px"
+                                        priority
                                     />
                                 </div>
                             </div>
@@ -65,6 +67,7 @@ export default function AboutPage() {
                                         alt="My Developer Journey"
                                         fill
                                         className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 400px"
                                     />
                                 </div>
                             </div>

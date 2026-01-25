@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Home, UserRound, Briefcase, FileBadge, Layers, MessageSquare, Menu, X, FolderGit2, Sun, Moon, Palette } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Home, UserRound, Briefcase, FileBadge, Layers, MessageSquare, Menu, X, FolderGit2, Sun, Moon, Palette, Code2 } from 'lucide-react';
 
 const colors = [
     { name: 'color-1', hex: '#ec1839', rgb: '236, 24, 57' },
@@ -13,6 +14,7 @@ const colors = [
 ];
 
 export default function Navbar() {
+    const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showColorPicker, setShowColorPicker] = useState(false);
     const [isDark, setIsDark] = useState(false);
@@ -24,6 +26,7 @@ export default function Navbar() {
         { name: 'About', href: '/about', icon: UserRound },
         { name: 'Services', href: '/services', icon: Layers },
         { name: 'Certificates', href: '/certificate', icon: FileBadge },
+        { name: 'Stack', href: '/stack', icon: Code2 },
         { name: 'Projects', href: '/projects', icon: FolderGit2 },
         { name: 'Contact', href: '/contact', icon: MessageSquare },
     ];
@@ -53,16 +56,22 @@ export default function Navbar() {
 
                     {/* Desktop Menu */}
                     <div className="hidden lg:flex items-center gap-8">
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className="flex items-center gap-2 text-text-secondary hover:text-skin transition-colors font-medium group"
-                            >
-                                <item.icon size={18} className="text-skin group-hover:text-skin" />
-                                {item.name}
-                            </Link>
-                        ))}
+                        {navItems.map((item) => {
+                            const isActive = pathname === item.href;
+                            return (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 font-medium group ${isActive
+                                            ? 'text-skin bg-skin/10 font-bold shadow-[0_0_10px_rgba(var(--skin-color-rgb),0.2)]'
+                                            : 'text-text-secondary hover:text-skin hover:bg-skin/5'
+                                        }`}
+                                >
+                                    <item.icon size={18} className={`transition-colors ${isActive ? 'text-skin' : 'text-skin group-hover:text-skin'}`} />
+                                    {item.name}
+                                </Link>
+                            );
+                        })}
 
                         {/* Desktop Theme Controls */}
                         <div className="flex items-center gap-3 ml-4 border-l border-bg-50 pl-4">
@@ -153,17 +162,23 @@ export default function Navbar() {
                 {isMenuOpen && (
                     <div className="lg:hidden bg-card border-t border-bg-50">
                         <div className="flex flex-col py-4 space-y-1 items-end">
-                            {navItems.map((item) => (
-                                <Link
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="flex items-center gap-3 px-4 py-3 text-lg text-text-primary hover:text-skin hover:bg-skin/5 transition-colors font-medium border-b border-bg-50/50 w-full justify-end"
-                                >
-                                    <item.icon size={22} className="text-skin" />
-                                    {item.name}
-                                </Link>
-                            ))}
+                            {navItems.map((item) => {
+                                const isActive = pathname === item.href;
+                                return (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className={`flex items-center gap-3 px-4 py-3 text-lg transition-colors font-medium border-b border-bg-50/50 w-full justify-end ${isActive
+                                            ? 'text-skin bg-skin/10'
+                                            : 'text-text-primary hover:text-skin hover:bg-skin/5'
+                                            }`}
+                                    >
+                                        <item.icon size={22} className="text-skin" />
+                                        {item.name}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 )}

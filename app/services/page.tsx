@@ -54,7 +54,7 @@ export default function Services() {
                 <section className="px-2 sm:px-6 lg:px-8 mb-12 md:mb-16">
                     <div className="max-w-7xl mx-auto text-center">
                         <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-text-primary mb-4 md:mb-6">
-                            Services – Full Stack & AI Development by <span className="text-skin">Rajan Prasaila Yadav</span>
+                            Engineering Scalable <span className="text-skin">AI & Web Solutions</span>
                         </h1>
                         <h2 className="text-xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">
                             What I Can Help You Build
@@ -95,7 +95,7 @@ export default function Services() {
                             {approach.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="flex flex-col items-center text-center p-4 md:p-6 bg-background rounded-xl border border-bg-50 hover:border-skin/50 transition-all group"
+                                    className="flex flex-col items-center text-center p-8 bg-card rounded-xl border border-bg-50 hover:bg-linear-to-br hover:from-skin/10 hover:to-transparent transition-all duration-300 group"
                                 >
                                     <div className="mb-3 md:mb-4 p-3 md:p-4 bg-skin/10 rounded-full text-skin group-hover:bg-skin group-hover:text-white transition-all">
                                         <item.icon size={24} className="md:w-7 md:h-7" />
@@ -109,7 +109,7 @@ export default function Services() {
 
                 {/* CTA */}
                 <section className="px-2 sm:px-6 lg:px-8">
-                    <div className="max-w-4xl mx-auto text-center bg-gradient-to-br from-skin/10 to-skin/5 border border-skin/20 rounded-2xl p-8 md:p-12">
+                    <div className="max-w-4xl mx-auto text-center bg-linear-to-br from-skin/10 to-skin/5 border border-skin/20 rounded-2xl p-8 md:p-12">
                         <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3 md:mb-4">
                             Let's Work Together
                         </h2>

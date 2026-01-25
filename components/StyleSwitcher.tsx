@@ -45,13 +45,13 @@ export default function StyleSwitcher() {
 
     return (
         <div
-            className="fixed top-[80px] z-[9999] transition-all duration-300 ease-in-out"
+            className="fixed top-[80px] z-50 transition-all duration-300 ease-in-out"
             style={{ right: isOpen ? '0' : '-200px' }}
         >
             {/* Toggle Button */}
             <div
                 onClick={toggleSwitcher}
-                className="absolute left-[-40px] top-0 w-[40px] h-[40px] bg-card text-skin flex items-center justify-center cursor-pointer rounded-l-lg shadow-md"
+                className="absolute -left-10 top-0 w-10 h-10 bg-card text-skin flex items-center justify-center cursor-pointer rounded-l-lg shadow-md"
             >
                 <span className="text-xl animate-spin-slow">⚙️</span>
             </div>

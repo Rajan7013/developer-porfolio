@@ -57,13 +57,14 @@ export default function HeroSection() {
 
                 {/* Profile Image (Right) */}
                 <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <div className="relative w-[220px] h-[220px] lg:w-[360px] lg:h-[360px] rounded-full overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.15)] border-4 border-background">
+                    <div className="relative w-full max-w-[400px] aspect-3/2 lg:w-[480px] lg:max-w-none rounded-2xl overflow-hidden shadow-2xl border border-bg-50 hover:rotate-3 transition-transform duration-500">
                         <Image
                             src="/image/home-profile.webp"
-                            alt="Rajan Prasaila Yadav"
+                            alt="Rajan Prasaila Yadav - Full Stack AI Developer"
                             fill
                             className="object-cover"
                             priority
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </div>
                 </div>
