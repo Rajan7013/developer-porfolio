@@ -1,31 +1,50 @@
 import { MetadataRoute } from 'next';
-import { portfolioData } from '@/lib/portfolio-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://relentlessgrowth.com'; // Replace with actual domain
+    const baseUrl = 'https://rajan-portfolio-iota.vercel.app';
 
-    // Static pages
-    const staticPages = [
-        '',
-        '/services',
-        '/portfolio',
-        '/about',
-        '/contact',
-        '/consultation',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: route === '' ? 1 : 0.8,
-    }));
-
-    // Dynamic portfolio pages
-    const portfolioPages = portfolioData.map((project) => ({
-        url: `${baseUrl}/portfolio/${project.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }));
-
-    return [...staticPages, ...portfolioPages];
+    return [
+        {
+            url: baseUrl,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 1,
+        },
+        {
+            url: `${baseUrl}/about`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/projects`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/services`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/certificate`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/stack`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/contact`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+    ];
 }
