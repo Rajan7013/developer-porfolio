@@ -1,61 +1,37 @@
-'use client';
-
 import React from 'react';
 import Projects from '@/components/Projects';
 import Footer from '@/components/Footer';
 
-import Script from 'next/script';
+
+import { portfolioData } from '@/lib/portfolio-data';
 
 export default function Portfolio() {
     return (
         <div className="min-h-screen bg-background pt-20">
-            <Script
+            <script
                 id="projects-json-ld"
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "ItemList",
                         "name": "Rajan Prasaila Yadav Project Portfolio",
-                        "itemListElement": [
-                            {
+                        "itemListElement": portfolioData.map((project, index) => ({
+                            "@type": "ListItem",
+                            "position": index + 1,
+                            "item": {
                                 "@type": "SoftwareApplication",
-                                "name": "EduNexus",
-                                "applicationCategory": "EducationalApplication",
+                                "name": project.title,
+                                "description": project.description,
                                 "operatingSystem": "Web",
-                                "url": "https://edu-svcet.vercel.app/",
-                                "creator": { "@type": "Person", "name": "Rajan Prasaila Yadav" }
-                            },
-                            {
-                                "@type": "SoftwareApplication",
-                                "name": "Health Assistant AI",
-                                "applicationCategory": "MedicalApplication",
-                                "operatingSystem": "Web",
-                                "url": "https://health-assistant-ai-ashen.vercel.app/",
-                                "creator": { "@type": "Person", "name": "Rajan Prasaila Yadav" }
-                            },
-                            {
-                                "@type": "SoftwareApplication",
-                                "name": "Pinnacle Nepal",
-                                "applicationCategory": "BusinessApplication",
-                                "operatingSystem": "Web",
-                                "url": "https://www.pinnaclenepal.org/",
-                                "creator": { "@type": "Person", "name": "Rajan Prasaila Yadav" }
-                            },
-                            {
-                                "@type": "SoftwareApplication",
-                                "name": "RupeeRapid",
-                                "applicationCategory": "FinanceApplication",
-                                "operatingSystem": "Web",
-                                "url": "https://rupeerrapid.vercel.app/",
+                                "url": project.liveLink || project.githubLink,
                                 "creator": { "@type": "Person", "name": "Rajan Prasaila Yadav" }
                             }
-                        ]
+                        }))
                     })
                 }}
             />
-            <Projects />
+            <main id="main-content"><Projects /></main>
             <Footer />
         </div>
     );

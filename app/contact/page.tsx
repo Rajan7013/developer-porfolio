@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Briefcase, GraduationCap, Code, MessageCircle, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, AlertCircle, CheckCircle2 } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 import { GOOGLE_SCRIPT_URL } from '@/lib/analytics';
@@ -63,15 +63,15 @@ export default function Contact() {
 
     return (
         <div className="min-h-screen bg-background">
-            <main className="pt-24 pb-16">
+            <main id="main-content" className="pt-24 pb-16">
                 {/* Header */}
                 <section className="px-2 sm:px-6 lg:px-8 mb-12 md:mb-16">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-text-primary mb-3 md:mb-4">
-                            Let's Build Something <span className="text-skin">Extraordinary Together</span>
+                            Let’s Discuss <span className="text-skin">Your Project</span>
                         </h1>
                         <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">
-                            Feel free to reach out for collaborations, projects, or internship opportunities.
+                            Tell me about your web application, management software, or AI automation needs.
                         </p>
                     </div>
                 </section>
@@ -90,7 +90,7 @@ export default function Contact() {
                                 <div className="inline-flex p-4 bg-green-500 text-white rounded-full mb-4 shadow-lg shadow-green-500/30">
                                     <MessageCircle size={32} />
                                 </div>
-                                <h3 className="text-xl font-bold text-green-500 mb-2">Chat on WhatsApp</h3>
+                                <h3 className="text-xl font-bold text-green-700 dark:text-green-400 mb-2">Chat on WhatsApp</h3>
                                 <p className="text-text-secondary mb-6 max-w-sm mx-auto">
                                     Quickest way to reach me. Click below to start a chat with a pre-filled message.
                                 </p>
@@ -98,7 +98,7 @@ export default function Contact() {
                                     href={whatsappLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg"
+                                    className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg"
                                 >
                                     Open WhatsApp <MessageCircle size={18} />
                                 </a>
@@ -206,7 +206,7 @@ export default function Contact() {
 
                                     {/* Status Messages */}
                                     {status === 'success' && (
-                                        <div className="flex items-center gap-2 text-green-500 bg-green-500/10 p-3 rounded-lg text-sm">
+                                        <div className="flex items-center gap-2 text-green-700 dark:text-green-400 bg-green-500/10 p-3 rounded-lg text-sm">
                                             <CheckCircle2 size={18} />
                                             <span>Message sent successfully! Check your email for a confirmation.</span>
                                         </div>

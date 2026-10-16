@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, UserRound, Briefcase, FileBadge, Layers, MessageSquare, Menu, X, FolderGit2, Sun, Moon, Palette, Code2 } from 'lucide-react';
+import { Home, UserRound, FileBadge, Layers, MessageSquare, Menu, X, FolderGit2, Sun, Moon, Palette, Code2 } from 'lucide-react';
 
 const colors = [
-    { name: 'color-1', hex: '#ec1839', rgb: '236, 24, 57' },
-    { name: 'color-2', hex: '#fa5b0f', rgb: '250, 91, 15' },
-    { name: 'color-3', hex: '#37b182', rgb: '55, 177, 130' },
+    { name: 'color-1', hex: '#c8102e', rgb: '200, 16, 46' },
+    { name: 'color-2', hex: '#a43b08', rgb: '164, 59, 8' },
+    { name: 'color-3', hex: '#16734f', rgb: '22, 115, 79' },
     { name: 'color-4', hex: '#1854b4', rgb: '24, 84, 180' },
-    { name: 'color-5', hex: '#f021b2', rgb: '240, 33, 178' },
+    { name: 'color-5', hex: '#ab087b', rgb: '171, 8, 123' },
 ];
 
 export default function Navbar() {
@@ -18,7 +18,7 @@ export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showColorPicker, setShowColorPicker] = useState(false);
     const [isDark, setIsDark] = useState(false);
-    const [activeColor, setActiveColor] = useState('#ec1839');
+    const [activeColor, setActiveColor] = useState('#c8102e');
 
     // Links matching source project
     const navItems = [
@@ -55,7 +55,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center gap-8">
+                    <div className="hidden lg:flex items-center gap-2 xl:gap-5">
                         {navItems.map((item) => {
                             const isActive = pathname === item.href;
                             return (
@@ -91,6 +91,7 @@ export default function Navbar() {
                                             {colors.map((color) => (
                                                 <button
                                                     key={color.name}
+                                                    aria-label={`Use ${color.hex} accent color`}
                                                     onClick={() => setColor(color.hex, color.rgb)}
                                                     style={{ backgroundColor: color.hex }}
                                                     className={`w-7 h-7 rounded-full border-2 ${activeColor === color.hex ? 'border-text-primary scale-110' : 'border-bg-50'} transition-all`}
@@ -130,6 +131,7 @@ export default function Navbar() {
                                         {colors.map((color) => (
                                             <button
                                                 key={color.name}
+                                                    aria-label={`Use ${color.hex} accent color`}
                                                 onClick={() => setColor(color.hex, color.rgb)}
                                                 style={{ backgroundColor: color.hex }}
                                                 className={`w-7 h-7 rounded-full border-2 ${activeColor === color.hex ? 'border-text-primary scale-110' : 'border-bg-50'} transition-all`}

@@ -4,18 +4,21 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import AnalyticsTracker from "@/components/analytics/AnalyticsTracker";
 import InstallPWA from "@/components/InstallPWA";
-import { Poppins, Clicker_Script } from "next/font/google";
-import Script from "next/script";
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
+
 
 const poppins = Poppins({
-  weight: ["200", "300", "400", "500", "600", "700"],
+  weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-poppins",
 });
 
-const clickerScript = Clicker_Script({
+// Only the five brand letters are needed from this display font.
+const clickerScript = localFont({
+  src: "./fonts/brand.woff2",
   weight: "400",
-  subsets: ["latin"],
+  display: "swap",
   variable: "--font-clicker",
 });
 
@@ -24,6 +27,7 @@ export const metadata: Metadata = {
   title: "Rajan | Full Stack AI Developer & System Designer",
   description:
     "Rajan is a Full Stack AI Developer and System Designer building real-world, production-ready web, AI and SaaS systems.",
+  twitter: { card: 'summary_large_image', title: 'Rajan | Full Stack AI Developer & System Designer', description: 'Web applications, management software, AI automation, and system architecture.', images: ['/og-image.png'] },
   keywords: [
     "Rajan Full Stack Developer",
     "Rajan AI Developer",
@@ -31,7 +35,6 @@ export const metadata: Metadata = {
     "Full Stack AI Engineer India",
     "Rajan Portfolio",
     "AI Web Developer Rajan",
-    "One Man Army Developer",
   ],
   authors: [{ name: "Rajan Prasaila Yadav" }],
   openGraph: {
@@ -53,12 +56,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     apple: "/icons/apple-touch-icon.png",
     shortcut: "/icons/favicon.ico",
   },
-  manifest: "/manifest.json",
+  manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -72,9 +74,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "39Uk7SyWWSHflx02-6UUBub3JFHJ7SmIEgwLeuVpiOY",
-    other: {
-      "msvalidate.01": "YOUR_BING_VERIFICATION_CODE",
-    },
   },
   robots: {
     index: true,
@@ -104,10 +103,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
+        <script
           id="structured-data"
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -137,13 +135,9 @@ export default function RootLayout({
                   "description": "Rajan is a Full Stack AI Developer and System Designer building real-world, production-ready systems across AI, education, and finance."
                 },
                 {
-                  "@type": "WebPage",
+                  "@type": "WebSite",
                   "name": "Rajan Portfolio - Full Stack AI Developer",
-                  "url": "https://rajan-portfolio-iota.vercel.app",
-                  "speakable": {
-                    "@type": "SpeakableSpecification",
-                    "cssSelector": ["main", "article", "h1", "h2", "p"]
-                  }
+                  "url": "https://rajan-portfolio-iota.vercel.app"
                 }
               ]
             })
@@ -151,11 +145,12 @@ export default function RootLayout({
         />
       </head>
       <body className={`${poppins.variable} ${clickerScript.variable}`}>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <AnalyticsTracker />
         <Navbar />
         <InstallPWA />
         {children}
-        <Analytics />
+        {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   );

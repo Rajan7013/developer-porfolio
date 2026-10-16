@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# Generated PWA and local audit output
+/public/sw.js
+/public/workbox-*.js
+/artifacts/lighthouse/

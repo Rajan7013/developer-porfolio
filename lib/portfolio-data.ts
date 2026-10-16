@@ -1,86 +1,101 @@
 export interface Project {
-    slug: string;
     title: string;
     description: string;
-    thumbnail: string;
-    stack: string[];
-    client: string;
-    year: string;
-    problem: string;
-    approach: string;
-    architecture: string[];
-    results: string[];
-    images: string[];
+    techStack: string[];
+    liveLink?: string;
+    githubLink?: string;
+    category: string;
+    icon: 'business' | 'health' | 'ai' | 'school' | 'education' | 'finance' | 'tasks';
+    status?: string;
+    highlights?: string[];
 }
 
-export const portfolioData: Project[] = [
+const newProjects: Project[] = [
     {
-        slug: 'edunexus-ecosystem',
-        title: 'EduNexus Ecosystem',
-        description: 'A comprehensive educational platform integrating student data, learning management, and AI-powered personalized path generation.',
-        thumbnail: '🎓',
-        stack: ['Next.js', 'Python', 'PostgreSQL', 'AI/ML'],
-        client: 'EduTech Corp',
-        year: '2024',
-        problem: 'The client needed a scalable solution to manage over 100,000 active students while providing personalized learning experiences that adapt to individual progress.',
-        approach: 'We architected a microservices-based platform using Next.js for the frontend and Python for the AI engine. The system analyzes student performance in real-time to adjust curriculum difficulty.',
-        architecture: [
-            'Frontend: Next.js 14 (App Router)',
-            'Backend: FastAPI (Python) & Node.js',
-            'Database: PostgreSQL (User Data) & Vector DB (Content)',
-            'AI Engine: Custom Fine-tuned LLM Models',
-        ],
-        results: [
-            '300% increase in student engagement',
-            '40% reduction in dropout rates',
-            'Seamless scaling to 500k concurrent users',
-        ],
-        images: ['/dashboard.png', '/analytics.png', '/mobile-view.png'],
+        title: 'PeopleOS — Corporate Management',
+        description: 'A company management web app bringing people, payroll, operations, and platform administration into one workspace, with organization-admin and super-admin dashboards.',
+        techStack: ['Next.js', 'Go', 'Git', 'GitHub', 'PostgreSQL', 'REST API', 'Dynamic RBAC', 'Google Login', 'Railway', 'Security'],
+        liveLink: 'https://peopleos-stag.cbtspv.com/',
+        category: 'Business Management', icon: 'business', status: 'Public website · Staging',
+        highlights: ['Employee directory, hiring, onboarding, benefits, departments, and hierarchy', 'Schedules, attendance, timesheets, leave, payroll, tax, and appraisals', 'Tasks, assets, inventory, procurement, approvals, and announcements', 'Organization plans, billing, analytics, audit logs, roles, and permissions'],
     },
     {
-        slug: 'health-assistant-ai',
-        title: 'Health Assistant AI',
-        description: 'An intelligent remote patient monitoring system that uses wearables data to predict potential health issues before they become critical.',
-        thumbnail: '🏥',
-        stack: ['React Native', 'TensorFlow', 'Node.js', 'MongoDB'],
-        client: 'HealthCare Plus',
-        year: '2023',
-        problem: 'Healthcare providers lacked real-time visibility into patient vitals post-discharge, leading to high readmission rates and delayed interventions.',
-        approach: 'We developed a cross-platform mobile app that syncs with standard medical wearables. A secure cloud backend processes vital signs using anomaly detection algorithms.',
-        architecture: [
-            'Mobile: React Native (iOS & Android)',
-            'Cloud: AWS Serverless (Lambda)',
-            'ML Pipeline: TensorFlow Serving',
-            'Security: HIPAA Compliant Architecture',
-        ],
-        results: [
-            '25% reduction in hospital readmissions',
-            'Real-time alerts for critical anomalies',
-            '98% patient adherence rate',
-        ],
-        images: ['/app-home.png', '/vitals-chart.png'],
+        title: 'FinanceOS — Expense Tracker',
+        description: 'A personal finance app for tracking income, expenses, budgets, and account transfers, with spending analytics, downloadable reports, and an installable PWA.',
+        techStack: ['React', 'TypeScript', 'Vite', 'Django REST Framework', 'Supabase PostgreSQL', 'Prisma', 'Recharts', 'PWA'],
+        liveLink: 'https://expensive-tracker-chi-three.vercel.app/',
+        githubLink: 'https://github.com/Rajan-Prasaila-Yadav/expensive-tracker',
+        category: 'Finance', icon: 'finance', status: 'Live app',
+        highlights: ['Category budgets and multi-account transaction tracking', 'Cash-flow charts, report exports, and security audit trails'],
     },
     {
-        slug: 'rag-knowledge-system',
-        title: 'RAG Knowledge System',
-        description: 'Enterprise-grade knowledge management system allowing employees to chat naturally with internal documentation and processes.',
-        thumbnail: '🧠',
-        stack: ['LangChain', 'Vector DB', 'FastAPI', 'React'],
-        client: 'Global Logistics Inc',
-        year: '2024',
-        problem: 'Employees wasted thousands of hours searching through fragmented PDF manuals, wikis, and email threads to find policy and procedure information.',
-        approach: 'We implemented a Retrieval-Augmented Generation (RAG) pipeline that ingests all internal docs into a vector database, allowing a chat interface to retrieve and summarize answers.',
-        architecture: [
-            'Frontend: React + Tailwind',
-            'Vector DB: Pinecone',
-            'Orchestration: LangChain',
-            'LLM: GPT-4o via Azure OpenAI',
-        ],
-        results: [
-            '60% reduction in support ticket volume',
-            'Instant answers to complex policy questions',
-            'Automated onboarding for new hires',
-        ],
-        images: ['/chat-interface.png', '/admin-panel.png'],
+        title: 'ExamPrep Pro',
+        description: 'An exam preparation and learning platform for managing batches, subjects, video lessons, notes, and practice tests with configurable marking and student performance analytics.',
+        techStack: ['Next.js', 'React', 'TypeScript', 'Zustand', 'Neon PostgreSQL', 'Drizzle ORM', 'Upstash Redis', 'Cloudflare R2', 'Resend'],
+        liveLink: 'https://exm-prep.vercel.app/',
+        githubLink: 'https://github.com/Rajan-Prasaila-Yadav/exm-prep',
+        category: 'Education', icon: 'education', status: 'Live app',
+        highlights: ['Batch-based learning, content access controls, and mock exams', 'Google OAuth, role permissions, email verification, and audit logs'],
+    },
+    {
+        title: 'EduCore — School Management',
+        description: 'A school ERP prototype with student and staff records, academic planning, attendance, exams, and fee workflows. Demo records are stored locally in the browser.',
+        techStack: ['Next.js', 'React', 'JavaScript', 'CSS Variables', 'LocalStorage'],
+        liveLink: 'https://scl-sooty.vercel.app/',
+        githubLink: 'https://github.com/Rajan-Prasaila-Yadav/scl',
+        category: 'Education', icon: 'school', status: 'UI prototype',
+        highlights: ['Class schedules, student fees, receipts, and printable reports', 'Theme customization and role previews; backend integration is future work'],
+    },
+    {
+        title: 'WorkLog Pro — Company Task Management',
+        description: 'An in-development project for organizing company tasks, employee directories, department workflows, and audit reporting. Explore the source and project documentation on GitHub.',
+        techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Prisma', 'PostgreSQL'],
+        githubLink: 'https://github.com/Rajan-Prasaila-Yadav/company-task-management',
+        category: 'Task Management', icon: 'tasks', status: 'In development · Not deployed',
     },
 ];
+
+const existingProjects: Project[] = [
+    {
+        title: 'Consultancy Platform',
+        description: 'A full-stack consultancy platform with user management, secure authentication, and seamless data flow between frontend and backend.',
+        techStack: ['Next.js 16', 'Supabase', 'Drizzle ORM', 'Tailwind CSS', 'Framer Motion', 'Zod', 'React Hook Form'],
+        liveLink: 'https://www.pinnaclenepal.org/',
+        category: 'Full Stack',
+        icon: 'business',
+    },
+    {
+        title: 'Health Assistant AI',
+        description: 'An AI-powered health assistant that provides intelligent responses and basic symptom guidance using generative AI.',
+        techStack: ['Next.js 15', 'Genkit AI', 'Firebase', 'Tailwind CSS', 'ShadCN UI'],
+        liveLink: 'https://health-assistant-ai-ashen.vercel.app/',
+        category: 'AI Application',
+        icon: 'health',
+    },
+    {
+        title: 'DocMind AI / QA System',
+        description: 'An enterprise-grade RAG platform with Voice Input, Multi-language support, and document-grounded answers from uploaded documents.',
+        techStack: ['React (Vite)', 'Tailwind CSS', 'Clerk Auth', 'Supabase Vector', 'Gemini AI', 'Python'],
+        liveLink: 'https://rajan-docai.vercel.app/',
+        category: 'AI / RAG',
+        icon: 'ai',
+    },
+    {
+        title: 'School Demo Platform',
+        description: 'A demo school management website showcasing information pages, structure, and basic administrative features.',
+        techStack: ['Next.js 16', 'Tailwind CSS', 'Framer Motion'],
+        liveLink: 'https://bfps-ruddy.vercel.app/',
+        category: 'Educational',
+        icon: 'school',
+    },
+    {
+        title: 'College Portal with AI',
+        description: 'A modern education portal with generative AI integration, authentication, and cloud file storage.',
+        techStack: ['Next.js 16', 'Firebase', 'Clerk Auth', 'Generative AI', 'AWS S3'],
+        liveLink: 'https://edu-svcet.vercel.app/',
+        category: 'Educational / AI',
+        icon: 'education',
+    },
+];
+
+export const portfolioData: Project[] = [...newProjects, ...existingProjects];

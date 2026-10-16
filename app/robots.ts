@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: ['*', 'GPTBot', 'ChatGPT-User', 'Google-Extended', 'Claude-Web', 'CCBot', 'bingbot'],
             allow: '/',
-            disallow: '/private/',
+            disallow: ['/private/', '/admin/'],
         },
         sitemap: 'https://rajan-portfolio-iota.vercel.app/sitemap.xml',
     };

@@ -1,16 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Download, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+
+interface InstallPromptEvent extends Event {
+    prompt(): Promise<void>;
+    userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
 
 export default function InstallPWA() {
-    const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+    const [deferredPrompt, setDeferredPrompt] = useState<InstallPromptEvent | null>(null);
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        const handler = (e: any) => {
-            e.preventDefault();
-            setDeferredPrompt(e);
+        const handler = (event: Event) => {
+            event.preventDefault();
+            setDeferredPrompt(event as InstallPromptEvent);
             setShow(true);
         };
         window.addEventListener("beforeinstallprompt", handler);
@@ -28,12 +32,9 @@ export default function InstallPWA() {
     };
 
     return (
-        <AnimatePresence>
+        <>
             {show && (
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                <div
                     className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 z-50 md:w-auto"
                 >
                     <div className="bg-white dark:bg-card border border-bg-50/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-4 rounded-2xl flex items-center gap-4 justify-between backdrop-blur-md">
@@ -42,7 +43,7 @@ export default function InstallPWA() {
                                 <Download size={20} />
                             </div>
                             <div>
-                                <h4 className="font-bold text-sm text-text-primary">Install App</h4>
+                                <p className="font-bold text-sm text-text-primary">Install App</p>
                                 <p className="text-xs text-text-secondary">Add to Home Screen</p>
                             </div>
                         </div>
@@ -62,8 +63,8 @@ export default function InstallPWA() {
                             </button>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             )}
-        </AnimatePresence>
+        </>
     );
 }

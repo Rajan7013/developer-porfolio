@@ -26,13 +26,19 @@ export default function Certificate() {
 
     const openLightbox = (index: number) => {
         setLightboxIndex(index);
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
     };
 
     const closeLightbox = () => {
         setLightboxIndex(null);
-        document.body.style.overflow = 'unset'; // Restore scrolling
     };
+
+    const lightboxOpen = lightboxIndex !== null;
+    useEffect(() => {
+        if (!lightboxOpen) return;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => { document.body.style.overflow = previousOverflow; };
+    }, [lightboxOpen]);
 
     // Memoize next/prev functions to safely use in useEffect
     const nextImage = useCallback((e?: React.MouseEvent) => {
@@ -61,14 +67,14 @@ export default function Certificate() {
 
     return (
         <div className="min-h-screen bg-background flex flex-col">
-            <main className="grow pt-24 pb-16">
+            <main id="main-content" className="grow pt-24 pb-16">
                 {/* Header */}
                 <section className="px-2 sm:px-6 lg:px-8 mb-8 md:mb-16 text-center">
                     <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-text-primary mb-2 md:mb-4">
-                        My <span className="text-skin">Certifications</span>
+                        Certificates & <span className="text-skin">Professional Learning</span>
                     </h1>
                     <p className="text-base md:text-xl text-text-secondary max-w-2xl mx-auto">
-                        Verified credentials in AI, Programming, and Digital Systems.
+                        Course certificates and participation records in AI, programming, and digital marketing.
                     </p>
                 </section>
 
@@ -78,12 +84,16 @@ export default function Certificate() {
                     <div className="mb-12 md:mb-20">
                         <h2 className="text-xl md:text-3xl font-bold text-text-primary mb-4 md:mb-8 flex items-center gap-2 md:gap-3">
                             <Award className="text-skin w-5 h-5 md:w-6 md:h-6" />
-                            <span className="truncate">Official Certificates</span>
+                            <span className="truncate">Certificate Gallery</span>
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
                             {images.map((cert, i) => (
                                 <div
                                     key={i}
+                                    role="button"
+                                    tabIndex={0}
+                                    aria-label={`View ${cert.title}`}
+                                    onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLightbox(i); } }}
                                     onClick={() => openLightbox(i)}
                                     className="group relative bg-card rounded-xl md:rounded-2xl overflow-hidden border border-bg-50 shadow-sm hover:shadow-[0_0_30px_rgba(var(--skin-color-rgb),0.4)] hover:border-skin transition-all duration-300 cursor-pointer"
                                 >
@@ -91,6 +101,8 @@ export default function Certificate() {
                                         <Image
                                             src={`/image/Certificates/${cert.src}`}
                                             alt={cert.title}
+                                            priority={i === 0}
+                                            fetchPriority={i === 0 ? "high" : "auto"}
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -151,6 +163,7 @@ export default function Certificate() {
                     <div className="flex justify-end p-4 z-50 shrink-0">
                         <button
                             onClick={closeLightbox}
+                            aria-label="Close certificate"
                             className="text-white/80 hover:text-white bg-white/10 p-2 rounded-full transition-colors backdrop-blur-md"
                         >
                             <X size={24} />
@@ -163,6 +176,7 @@ export default function Certificate() {
                         {/* Prev Button */}
                         <button
                             onClick={prevImage}
+                            aria-label="Previous certificate"
                             className="absolute left-2 md:left-4 z-50 text-white/50 hover:text-white p-4 hover:bg-white/5 rounded-full transition-all"
                         >
                             <ChevronLeft size={36} />
@@ -187,6 +201,7 @@ export default function Certificate() {
                         {/* Next Button */}
                         <button
                             onClick={nextImage}
+                            aria-label="Next certificate"
                             className="absolute right-2 md:right-4 z-50 text-white/50 hover:text-white p-4 hover:bg-white/5 rounded-full transition-all"
                         >
                             <ChevronRight size={36} />

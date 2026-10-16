@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-@theme {
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
   --color-background: var(--bg-black-900);
   --color-card: var(--bg-black-100);
   --color-accent: var(--skin-color);
@@ -26,8 +28,8 @@
   --bg-black-50: #e8dfec;
   --text-black-900: #302e4d;
   --text-black-700: #504e70;
-  --skin-color: #ec1839;
-  --skin-color-rgb: 236, 24, 57;
+  --skin-color: #c8102e;
+  --skin-color-rgb: 200, 16, 46;
 }
 
 .dark {
@@ -44,10 +46,10 @@ html,
 body {
   line-height: 1.5;
   font-size: 16px;
-  font-family: var(--font-sans);
+  font-family: var(--font-poppins), Arial, sans-serif;
   background-color: var(--bg-black-900);
   color: var(--text-black-700);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
@@ -247,3 +249,10 @@ ul {
   color: var(--text-black-700);
   font-size: 14px;
 }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; transform: translateY(-200%); padding: 12px 18px; background: var(--bg-black-100); color: var(--text-black-900); border: 2px solid var(--skin-color); border-radius: 8px; }
+.skip-link:focus { transform: translateY(0); }
+:focus-visible { outline: 2px solid var(--skin-color); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+
+/* Keep accent labels readable on dark surfaces while retaining solid button contrast. */
+.dark .text-skin { color: color-mix(in srgb, var(--skin-color) 55%, white); }

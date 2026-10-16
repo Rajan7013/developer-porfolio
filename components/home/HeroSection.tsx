@@ -1,17 +1,10 @@
-'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import ProfileImage from '@/components/ProfileImage';
 import Link from 'next/link';
 import { Download } from 'lucide-react';
-import useTypewriter from '@/hooks/useTypewriter';
 
 export default function HeroSection() {
-    const roles = [
-        "Full Stack AI Developer"
-    ];
-    const displayText = useTypewriter(roles, 100, 2000, false);
-
     return (
         <section className="pt-24 pb-10 px-6 flex items-center bg-background">
             <div className="max-w-content w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
@@ -30,9 +23,9 @@ export default function HeroSection() {
                     </h2>
 
                     {/* Typing Role (H3) */}
-                    <h3 className="text-lg lg:text-[18px] font-medium text-emerald-500 h-8">
-                        {displayText}
-                    </h3>
+                    <p className="text-lg lg:text-[18px] font-medium text-emerald-700 dark:text-emerald-400 h-8">
+                        Full Stack AI Developer
+                    </p>
 
                     {/* Supporting Text */}
                     <p className="text-lg lg:text-[18px] leading-[1.7] text-text-secondary">
@@ -67,14 +60,7 @@ export default function HeroSection() {
                 {/* Profile Image (Right) */}
                 <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
                     <div className="relative w-full max-w-[400px] aspect-3/2 lg:w-[480px] lg:max-w-none rounded-2xl overflow-hidden shadow-2xl border border-bg-50 hover:rotate-3 transition-transform duration-500">
-                        <Image
-                            src="/image/home-profile.webp"
-                            alt="Rajan Prasaila Yadav - Full Stack AI Developer"
-                            fill
-                            className="object-cover"
-                            priority
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                        <ProfileImage alt="Rajan Prasaila Yadav - Full Stack AI Developer" sizes="(max-width: 480px) calc(100vw - 48px), (max-width: 1024px) 400px, 480px" />
                     </div>
                 </div>
 

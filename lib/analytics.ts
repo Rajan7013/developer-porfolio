@@ -15,7 +15,7 @@ export interface AnalyticsData {
 }
 
 export const trackEvent = async (data: Omit<AnalyticsData, 'action'>) => {
-    if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
         console.warn('Analytics: Google Script URL not set');
         return;
     }

@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import { Github, Linkedin } from 'lucide-react';
@@ -12,9 +10,9 @@ export default function Footer() {
                 <div className="text-center mb-3">
                     <p className="font-bold text-sm md:text-base text-text-primary">
                         Rajan Prasaila Yadav <span className="text-skin mx-1 hidden sm:inline">|</span>
-                        <span className="block sm:inline font-medium text-text-secondary mt-0.5 sm:mt-0">Student Full Stack AI Developer</span>
+                        <span className="block sm:inline font-medium text-text-secondary mt-0.5 sm:mt-0">Full Stack AI Developer & System Designer</span>
                     </p>
-                    <a href="mailto:info@rajan.dev" className="text-skin hover:underline text-xs md:text-sm mt-1 inline-block">info@rajan.dev</a>
+                    <a href="mailto:rajanprasaila@gmail.com" className="text-skin hover:underline text-xs md:text-sm mt-1 inline-block">rajanprasaila@gmail.com</a>
                 </div>
 
                 {/* Line 2: Navigation Links */}

@@ -1,17 +1,15 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import HeroSection from '@/components/home/HeroSection';
-import CountUp from '@/components/ui/CountUp';
-import { Layers, Briefcase, Users, Clock, Headset, ArrowRight, Star, Globe, TrendingUp, Monitor, Smartphone, Video, Search, ShieldCheck, Database, Coins } from 'lucide-react';
+import { portfolioData } from '@/lib/portfolio-data';
+import { Mail, MessageSquare, Layers, Briefcase, Users, ArrowRight, Star, TrendingUp, Monitor, Smartphone, Search, ShieldCheck, Database, Coins } from 'lucide-react';
 
 export default function Home() {
   return (
     <>
-      <main className="min-h-screen bg-background text-text-primary">
+      <main id="main-content" className="min-h-screen bg-background text-text-primary">
 
         {/* HERO SECTION */}
         {/* HERO SECTION */}
@@ -27,30 +25,20 @@ export default function Home() {
         {/* STATS BAR */}
         <section className="py-8 bg-background border-b border-bg-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-2 divide-bg-50">
-              <div className="p-4">
-                <div className="text-4xl md:text-5xl font-bold text-skin mb-2">
-                  <CountUp end={8} suffix="+" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-center">
+              {[
+                { value: '10+', label: 'Deployed Projects' },
+                { value: 'End-to-End', label: 'Design to Deployment' },
+                { value: 'Full Stack & AI', label: 'Development & Integration' },
+                { value: 'Always Building', label: 'Learning Through Practice' },
+              ].map((metric, index) => (
+                <div key={metric.label} className="min-h-40 rounded-2xl border border-bg-50 bg-card p-4 sm:p-6 flex flex-col items-center justify-center gap-3">
+                  <div className="text-xl sm:text-2xl font-bold text-skin min-h-16 flex items-center justify-center">
+                    {index === 0 ? <span className="text-4xl md:text-5xl">{metric.value}</span> : metric.value}
+                  </div>
+                  <div className="text-sm text-text-secondary font-medium leading-relaxed">{metric.label}</div>
                 </div>
-                <div className="text-text-secondary font-medium">Deployed Projects</div>
-              </div>
-              <div className="p-4 pl-8">
-                <div className="text-xl md:text-2xl font-bold text-skin mb-2 h-12 flex items-center justify-center">
-                  1 Paid Client + Academic Systems
-                </div>
-              </div>
-              <div className="p-4 pl-8">
-                <div className="text-xl md:text-2xl font-bold text-skin mb-2 h-12 flex items-center justify-center">
-                  3rd Year
-                </div>
-                <div className="text-text-secondary font-medium">CSE Student</div>
-              </div>
-              <div className="p-4 pl-8">
-                <div className="text-xl md:text-2xl font-bold text-skin mb-2 h-12 flex items-center justify-center">
-                  24/7
-                </div>
-                <div className="text-text-secondary font-medium">Learner</div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -91,7 +79,7 @@ export default function Home() {
 
               {/* Right Visual */}
               <div className="relative flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-[380px] aspect-square flex items-center justify-center lg:-mt-32">
+                <div className="relative w-full max-w-[480px] aspect-square flex items-center justify-center">
                   {/* Light Mode Image */}
                   <Image
                     src="/image/light.webp"
@@ -125,6 +113,9 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
+                { icon: Mail, title: "Bulk Email Systems", desc: "Email campaigns, scheduled messages, and automated customer notifications." },
+                { icon: MessageSquare, title: "WhatsApp Chatbot Agents", desc: "Automatic answers to customer queries, FAQ support, and handoffs to your team." },
+                { icon: Briefcase, title: "Management Software", desc: "Company, school, finance, and task management systems built around everyday operations." },
                 { icon: Monitor, title: "Full Stack Web Development", desc: "Fast, scalable websites focused on conversion and performance." },
                 { icon: Layers, title: "AI App Integration", desc: "Intelligent features for modern applications." },
                 { icon: Smartphone, title: "PWA & Offline Systems", desc: "Web apps that work reliably without internet." },
@@ -167,57 +158,16 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="section-title text-center mb-10">
               <h2 className="text-3xl font-bold mb-2">Selected Projects</h2>
-              <p className="text-text-secondary">Real revenue-generating results, not just code.</p>
+              <p className="text-text-secondary">Business platforms, finance tools, education systems, and AI applications.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Using placeholders or your existing projects logic - keeping it static for strictly following copy */}
-              {[
-                {
-                  title: "Consultancy Platform",
-                  res: "Comprehensive data flow management",
-                  bg: "bg-blue-900/10",
-                  tag: "Live Demo",
-                  img: "/Project image/pinnacle-nepal/project-pinnacle-nepal-desktop-home.webp",
-                  link: "https://www.pinnaclenepal.org/"
-                },
-                {
-                  title: "Health Assistant AI",
-                  res: "Intelligent user support insights",
-                  bg: "bg-green-900/10",
-                  tag: "AI System",
-                  img: "/Project image/HealthMind AI/project-healthmind-ai-desktop-home.webp",
-                  link: "https://health-assistant-ai-ashen.vercel.app/"
-                },
-                {
-                  title: "School Management",
-                  res: "Streamlined admin operations",
-                  bg: "bg-purple-900/10",
-                  tag: "Academic Project",
-                  img: "/Project image/school management/project-school-desktop-home.webp",
-                  link: "https://bfps-ruddy.vercel.app/"
-                }
-              ].map((item, i) => (
-                <Link href={item.link} target="_blank" key={i} className={`block rounded-2xl overflow-hidden border border-bg-50 group hover:shadow-2xl transition-all relative`}>
-                  <span className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded text-skin shadow-sm z-10 border border-skin/10">
-                    {item.tag}
-                  </span>
-                  <div className={`relative h-48 w-full ${item.bg} overflow-hidden`}>
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-5 bg-card">
-                    <h3 className="text-lg font-bold mb-1">{item.title}</h3>
-                    <div className="flex items-center gap-2 text-skin font-medium text-sm">
-                      <ArrowRight size={14} />
-                      <span>{item.res}</span>
-                    </div>
-                  </div>
+              {portfolioData.slice(0, 3).map((project) => (
+                <Link href={project.liveLink!} target="_blank" rel="noopener noreferrer" key={project.title} className="block rounded-2xl border border-bg-50 bg-card p-6 group hover:border-skin hover:shadow-lg transition-all">
+                  <span className="text-xs font-bold text-skin">{project.status}</span>
+                  <h3 className="text-xl font-bold mt-4 mb-3 group-hover:text-skin">{project.title}</h3>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-5">{project.description}</p>
+                  <span className="inline-flex items-center gap-2 text-skin font-semibold text-sm">Explore project <ArrowRight size={14} /></span>
                 </Link>
               ))}
             </div>
