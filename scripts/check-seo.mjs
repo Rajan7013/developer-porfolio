@@ -13,7 +13,9 @@ for (const path of routes) {
   const expected = 'https://rajan-portfolio-iota.vercel.app' + (path === '/' ? '' : path === '/technologies' ? '/stack' : path);
   if (response.status !== 200 || !title || titles.has(title) || !description || canonical !== expected || h1 !== 1) throw Error('Metadata check failed: ' + path);
   titles.add(title);
-  for (const match of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)) JSON.parse(match[1]);
+  const schemas = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
+  if (!schemas.length) throw Error('Missing structured data: ' + path);
+  for (const match of schemas) JSON.parse(match[1]);
   results.push({ path, status: response.status, title, canonical, h1 });
 }
 const manifest = await (await fetch(base + '/manifest.webmanifest')).json();

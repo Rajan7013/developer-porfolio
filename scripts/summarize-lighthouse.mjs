@@ -30,7 +30,7 @@ lines.push('',
     '- Online technology logos remain external as requested; their latency and availability can vary.',
     '- Vercel Analytics loads on Vercel; its production impact is absent from localhost scores.',
     '- Next.js experimental inlineCss reduces first-load requests, but requires rechecking on framework upgrades and prevents separate stylesheet caching on initial responses.',
-    '- Changes have not been deployed. Repeat the audits against production after deployment.', '',
+    '- This audit did not deploy changes. Repeat the audits against the deployed site to verify production results.', '',
     '## Reproduce', '',
     'Build and start the production server on port 3101, run scripts/check-seo.mjs, then pass an installed Lighthouse cli/index.js path to scripts/audit-lighthouse.mjs. AUDIT_BASE_URL selects a different origin. Run scripts/summarize-lighthouse.mjs to regenerate this table. Full HTML/JSON reports are in artifacts/lighthouse/ (git-ignored).', '',
     'References: [Lighthouse scoring](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring), [Next.js inline CSS](https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss).', '');
