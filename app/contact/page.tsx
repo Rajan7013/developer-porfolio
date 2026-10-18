@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, Laptop, Send, MessageCircle, AlertCircle, CheckCircle2 } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 import { GOOGLE_SCRIPT_URL } from '@/lib/analytics';
@@ -128,11 +128,11 @@ export default function Contact() {
 
                                 <div className="flex items-center gap-4 p-4 bg-card border border-bg-50 rounded-xl">
                                     <div className="p-3 bg-skin/10 rounded-full text-skin">
-                                        <MapPin size={20} />
+                                        <Laptop size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-xs text-text-secondary font-medium uppercase tracking-wider">Location</p>
-                                        <p className="font-semibold text-text-primary">India / Nepal</p>
+                                        <p className="text-xs text-text-secondary font-medium uppercase tracking-wider">Availability</p>
+                                        <p className="font-semibold text-text-primary">Available for Remote Work</p>
                                     </div>
                                 </div>
                             </div>
